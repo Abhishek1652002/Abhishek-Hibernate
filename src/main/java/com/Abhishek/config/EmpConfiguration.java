@@ -24,18 +24,19 @@ public class EmpConfiguration {
 		properties.put(Environment.FORMAT_SQL, "true");
 		
 		
-		StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().applySettings(properties).build();
-		Metadata metaData=new MetadataSources(ssr).addAnnotatedClass(com.Abhishek.entity.Employee.class).getMetadataBuilder().build();
-		SessionFactory sessionFactory=metaData.buildSessionFactory();
+//		StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().applySettings(properties).build();
+//		Metadata metaData=new MetadataSources(ssr).addAnnotatedClass(com.Abhishek.entity.Employee.class).getMetadataBuilder().build();
+//		SessionFactory sessionFactory=metaData.buildSessionFactory();
+		
+		
+		return new MetadataSources(new StandardServiceRegistryBuilder().applySettings(properties).build())
+				.addAnnotatedClass(com.Abhishek.entity.Employee.class).getMetadataBuilder().build().buildSessionFactory();
 		
 		
 		
 		
 		
 		
-		
-		
-		return sessionFactory;
 	}
 	
 	

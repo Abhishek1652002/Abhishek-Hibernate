@@ -5,9 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Transient;
 
 //POJO CLASS 
+
+@NamedQuery(name="updateAnEmployee",query="update Employee set name=:n where id=:10")
+@NamedQuery(name="deleteAnEmployee",query="delete from Employee  where id=:i")
+
+
+
+
 
 @Entity
 public class Employee {
