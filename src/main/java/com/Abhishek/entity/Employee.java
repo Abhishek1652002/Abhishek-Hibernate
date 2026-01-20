@@ -6,14 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
 //POJO CLASS 
-
-@NamedQuery(name="updateAnEmployee",query="update Employee set name=:n where id=:10")
-@NamedQuery(name="deleteAnEmployee",query="delete from Employee  where id=:i")
-
-
 
 
 
@@ -27,19 +23,29 @@ public class Employee {
 	private String name, gender;
 	private int salary;
 	
-	@Transient
-	private String country;
+	@OneToOne
+	private Address address;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(String name, String gender, int salary,String country) {
+	public Employee(String name, String gender, int salary) {
 		super();
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-		this.country = country;
+		
+	}
+	
+	
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getId() {
@@ -76,7 +82,10 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
+				+ address + "]";
 	}
+
+	
 
 }
