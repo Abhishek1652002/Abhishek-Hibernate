@@ -30,9 +30,14 @@ public class EmployeeRunner {
 		//Persistent object
 		
 		
-		Employee emp=new Employee("Vipin","Male",98000);
+		Employee emp=new Employee("Atul","Male",98000);
          
-		Address add=new Address("Noida","UP");
+		Address add=new Address();
+		add.setState("UP");
+		add.setCity("GZB");
+		add.setEmployee(emp);
+		
+		
 		
 		emp.setAddress(add);
 		
@@ -48,8 +53,15 @@ public class EmployeeRunner {
 		session.persist(add);
 		tn.commit();
 
+		Employee employee=session.find(Employee.class, 1);	
+		System.out.println(employee);
+		System.out.println(employee.getAddress());
 		
-		
+			
+			Address address=session.find(Address.class, 1);//find return null not return exception	
+			System.out.println(address);
+			System.out.println(address.getEmployee());
+	
 		
 	
 	
