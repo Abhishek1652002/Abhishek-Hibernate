@@ -1,5 +1,8 @@
 package com.Abhishek.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
@@ -24,9 +28,8 @@ public class Employee {
 	private String name, gender;
 	private int salary;
 	
-	@OneToOne(mappedBy="employee")
-	@JoinColumn(name="add_id")
-	private Address address;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Address> addresses;
 
 	public Employee() {
 		super();
@@ -41,13 +44,19 @@ public class Employee {
 	}
 	
 	
+	
+	
 
-	public Address getAddress() {
-		return address;
+	
+
+	
+
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	public int getId() {

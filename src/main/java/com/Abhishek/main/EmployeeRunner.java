@@ -4,6 +4,7 @@ package com.Abhishek.main;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -30,16 +31,34 @@ public class EmployeeRunner {
 		//Persistent object
 		
 		
-		Employee emp=new Employee("Atul","Male",98000);
+		Employee emp=new Employee("Anshu","Male",98000);
          
 		Address add=new Address();
 		add.setState("UP");
 		add.setCity("GZB");
-		add.setEmployee(emp);
+		
+		Address add1=new Address();
+		add.setState("UP");
+		add.setCity("Noida");
+		
+		Address add2=new Address();
+		add.setState("UP");
+		add.setCity("Lucknow");
+		
+		ArrayList<Address>listOfAddresses=new ArrayList<>();
+		listOfAddresses.add(add);
+		listOfAddresses.add(add1);
+		listOfAddresses.add(add2);
 		
 		
 		
-		emp.setAddress(add);
+	    emp.setAddresses(listOfAddresses);
+		
+		
+		
+		
+		
+		
 		
 		//SessionFactory sessionFactory=EmpConfiguration.getSessionFactory();
 		
@@ -51,16 +70,11 @@ public class EmployeeRunner {
 		
 		session.persist(emp);
 		session.persist(add);
+		session.persist(add1);
+		session.persist(add2);
 		tn.commit();
 
-		Employee employee=session.find(Employee.class, 1);	
-		System.out.println(employee);
-		System.out.println(employee.getAddress());
 		
-			
-			Address address=session.find(Address.class, 1);//find return null not return exception	
-			System.out.println(address);
-			System.out.println(address.getEmployee());
 	
 		
 	
