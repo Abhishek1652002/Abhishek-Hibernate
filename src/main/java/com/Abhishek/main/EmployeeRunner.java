@@ -30,20 +30,23 @@ public class EmployeeRunner {
 		
 		//Persistent object
 		
-		
+		/*
 		Employee emp=new Employee("Anshu","Male",98000);
          
 		Address add=new Address();
 		add.setState("UP");
 		add.setCity("GZB");
+		add.setEmployee(emp);
 		
 		Address add1=new Address();
-		add.setState("UP");
-		add.setCity("Noida");
+		add1.setState("UP");
+		add1.setCity("Noida");
+		add1.setEmployee(emp);
 		
 		Address add2=new Address();
-		add.setState("UP");
-		add.setCity("Lucknow");
+		add2.setState("UP");
+		add2.setCity("Lucknow");
+		add2.setEmployee(emp);
 		
 		ArrayList<Address>listOfAddresses=new ArrayList<>();
 		listOfAddresses.add(add);
@@ -55,7 +58,7 @@ public class EmployeeRunner {
 	    emp.setAddresses(listOfAddresses);
 		
 		
-		
+		*/
 		
 		
 		
@@ -68,13 +71,16 @@ public class EmployeeRunner {
 		
 		Transaction tn=session.beginTransaction();
 		
-		session.persist(emp);
-		session.persist(add);
-		session.persist(add1);
-		session.persist(add2);
-		tn.commit();
-
 		
+//		session.persist(add);
+//		session.persist(add1);
+//		session.persist(add2);
+//		session.persist(emp);
+//		tn.commit();
+
+		Address address=session.find(Address.class, 3);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
 	
 		
 	
